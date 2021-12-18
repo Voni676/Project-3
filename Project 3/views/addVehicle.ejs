@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method='POST' action="/addVehicle">
+        <label for=""></label>
+
+        <label for="vDescription">Vehicle Description</label>
+        <input type="text" id="vDescription" name="vDescription" required><br>
+        <fieldset>
+            <legend>Vehicle Type</legend>
+
+            <input type="radio" id="car" name="vType" value="C" checked onchange="findSelected()">
+            <label for="car">Car</label><br>
+            <input type="radio" id="Truck" name="vType" value="T" onchange="findSelected()">
+            <label for="Truck">Truck</label><br>
+            <input type="radio" id="bike" name="vType" value="B" onchange="findSelected()">
+            <label for="bike">Bike</label><br>
+            <input type="radio" id="motorcycle" name="vType" value="M" onchange="findSelected()">
+            <label for="motorcycle">Motorcycle</label><br>
+        </fieldset>
+        <label for="vYear">Vehicle Year</label>
+        <input type="text" id="vYear" name="vYear" min="1950" max="" required><br>
+
+        <label for="vMileage">Vehicle Mileage</label>
+        <input type="text" id="vMileage" name="vMileage" required><br>
+
+        <label for="vStillUsing">Still in Use?</label>
+        <input type="checkbox" id="vStillUsing" name="vStillUsing"><br>
+        <input type="submit" value="Save">
+    </form>
+    <form method="get" action="/displayVehicle">
+        <input type="submit" value="Cancel">
+    </form>
+
+    <script type="text/javascript">
+            findSelected();
+        function findSelected() {
+            //var result = document.querySelector('input[id="bike"]:checked').value;
+            if (document.getElementById('bike').checked) {
+
+                document.getElementById("vMileage").setAttribute('disabled', true);
+                document.getElementById('vMileage').value = ""
+            }
+            else {
+                document.getElementById("vMileage").removeAttribute('disabled');
+            }
+            console.log(document.getElementById('bike').checked)
+        }
+    </script>
+</body>
+
+</html>

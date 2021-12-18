@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Vehicle</h1>
+    <form method='POST' action="/editVehicle">
+        <label for=""></label>
+        <input type="hidden" name="vehicle_ID" id="vehicle_ID"
+        value="<%= vehicleData[0].vehicle_ID %>"> <br>
+
+        <label for="vDescription">Vehicle Description</label>
+        <input type="text" id="vDescription" name="vDescription" required
+        value="<%= vehicleData[0].vDescription %>"><br>
+<fieldset>
+    <legend>Vehicle Type</legend>
+
+        <input type="radio" id="car" name="vType" value="C" onchange="findSelected()" <%=vehicleData[0].vType == "C" ? "checked":""%>>
+        <label for="car">Car</label><br>
+
+
+        <input type="radio" id="Truck" name="vType" value="T" onchange="findSelected()" <%=vehicleData[0].vType == "T" ? "checked":""%>>
+        <label for="Truck">Truck</label><br>
+
+        <input type="radio" id="bike" name="vType" value="B" onchange="findSelected()" <%=vehicleData[0].vType == "B" ? "checked":""%>>
+        <label for="bike">Bike</label><br>
+
+        <input type="radio" id="motorcycle" name="vType" value="M" onchange="findSelected()" <%=vehicleData[0].vType == "M" ? "checked":""%>>
+        <label for="motorcycle">Motorcycle</label><br>
+    </fieldset>
+        <label for="vYear">Vehicle Year</label>
+        <input type="number" id="vYear" name="vYear" min="1950" max="" required
+        value="<%= vehicleData[0].vYear %>"><br>
+    
+        <label for="vMileage">Vehicle Mileage</label>
+        <input <%=vehicleData[0].vType == "B" ? 'type="hidden"': "type='number'"%> id="vMileage" name="vMileage" required
+        value="<%= vehicleData[0].vMileage %>"><br>
+
+
+
+
+        <label for="vStillUsing">Still in Use?</label>
+        <input type="checkbox" id="vStillUsing" name="vStillUsing" <%=vehicleData[0].vStillUsing == "Y" ? "checked": ""%>><br>
+
+
+        <input type="submit" value="Save Changes">
+    </form>
+    <form method="get" action="/displayVehicle">
+        <input type="submit" value="Cancel">
+    </form>
+<script type="text/javascript">
+    findSelected();
+function findSelected() { 
+
+   if(document.getElementById('bike').checked){
+
+        document.getElementById("vMileage").setAttribute('disabled', true);
+        document.getElementById('vMileage').value= ""
+    }
+    else{
+        document.getElementById("vMileage").removeAttribute('disabled');
+    }
+    console.log(document.getElementById('bike').checked)
+}
+</script>
+</body>
+</html>

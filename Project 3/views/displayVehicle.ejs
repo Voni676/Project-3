@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Vehicles</title>
+</head>
+<body>
+    <h1>Vehicle List</h1>
+    <br>
+    <form method='get' action="/addVehicle">
+        <input type="submit" value="Add Vehicle">
+    </form>
+    <br
+    <br>
+    <table border="1px solid black">
+        <% for (let i=0; i < vehicleData.length;i++) { %>
+            <tr>
+                <td><img src="/download.png" height="20px" width="20px" 
+                    onclick="mercyDelete('<%= vehicleData[i].vehicle_ID%>')"></td>
+                <td><%=vehicleData[i].vDescription%></td>
+                <td><%=vehicleData[i].vType%></td>
+                <td><%=vehicleData[i].vYear%></td>
+                <td><%=vehicleData[i].vMileage%></td>
+                <td><%=vehicleData[i].vStillUsing%></td>
+                
+                <td><img src="/download (1).png" height="20px" width="20px"
+                    onclick="editVehicle('<%= vehicleData[i].vehicle_ID%>')"></td>
+                
+                    <%}%>
+            </tr>
+
+    </table>
+<br>
+
+    <script>
+        function mercyDelete(vehicleID){
+            var ans = prompt("Delete Vehicle " + vehicleID + "?","N");
+            if (ans.toLowerCase()=== 'y'){
+                window.location.href = "/delVehicle/" + vehicleID;
+            }
+        }
+        function editVehicle(vehicleID){
+            window.location.href = "/editvehicle/"+ vehicleID
+        }
+
+    </script>
+</body>
+</html>

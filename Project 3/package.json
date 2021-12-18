@@ -1,0 +1,18 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "description": "Vehicle Inventory System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joe Slaugh,Ben Fisher,Adam Lyons,Ethan Vaughn,Andrew James",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "knex": "^0.95.14",
+    "path": "^0.12.7",
+    "pg": "^8.7.1"
+  }
+}
